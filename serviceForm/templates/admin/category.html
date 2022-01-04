@@ -1,0 +1,26 @@
+{% extends 'main/base.html' %}
+{% block content %}
+<table>
+<tr>
+    <th>項目總類</th>
+</tr>
+{%  for category in categories %}
+    <tr>
+        <td>{{ category.categoryname }}</td>
+        <td><a href="{% url 'serviceForm:categoryRead' category.categoryid %}">{{ category.categoryname }}</a></td>
+        <td><a href="{% url 'serviceForm:categoryUpdate' category.categoryid %}"><button>修改</button></a></td>
+        <td>
+            <form method="post" action="{% url 'serviceForm:categoryDelete' category.categoryid %}">
+                {% csrf_token %}
+                <a href="{% url 'serviceForm:categoryDelete' category.categoryid %}">
+                    <input type="submit" value="刪除">
+                </a>
+            </form>
+        </td>
+    </tr>
+{% endfor %}
+</table>
+
+<a href="{% url 'serviceForm:categoryCreate' %}">新增</a>  <!--/serviceForm/categoryCreate...serviceForm\urls.py裡面定義的path-->
+
+{% endblock %}

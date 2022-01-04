@@ -1,0 +1,284 @@
+{% extends 'main/base.html' %}
+{% block content %}
+    <!--The field's type attribute defines what sort of widget will be displayed. The name and id of the field are used to identify the field in JavaScript/CSS/HTML,while value defines the initial value for the field when it is first displayed-->
+{#    The matching team label is specified using the label tag (see "Enter name" above), with a for field containing the id value of the associated input.#}
+<form method="POST">
+{% csrf_token %}
+            <div class="container">
+                <fieldset  class="">
+                <legend class="border p-2 text-center">叫修紀錄單</legend>
+
+                <div class="from-group row">
+                    <div class="col-sm">
+                    <label for="sheetid" class="col-form-label">單號</label>
+                      <input type="text" class="form-control" id="sheetid" placeholder="20220110001">
+                    </div>
+                    <div class="col-sm">
+                    <label for="{{ serviceForm.emp.id_for_label }}" class="col-form-label">{{ serviceForm.emp.label }}</label>
+                      <input type="text" class="form-control" id="colFormLabel" placeholder="劉冠廷">
+                    </div>
+                    {{ serviceForm.non_field_errors }}
+                <div class="fieldWrapper col-sm ">
+                    {{ serviceForm.area.errors }}
+
+                    <label for="{{ serviceForm.area.id_for_label }}" class="col-form-label"> {{ serviceForm.area.label }}</label>
+                    {{ serviceForm.area}}
+
+{#                    <select class="custom-select">#}
+{#                      <option selected>Open this select menu</option>#}
+{#                      <option value="1">One</option>#}
+{#                      <option value="2">Two</option>#}
+{#                      <option value="3">Three</option>#}
+{#                    </select>#}
+                </div>
+
+                </div>
+
+                <div class="from-group row">
+                <div class="col-sm">
+                  <label for="{{ serviceForm.date.id_for_label }}" class="col-form-label">{{ serviceForm.date.label }}</label>
+{#                  <input type="date" id="date" name="date" value="" class="custom-select">#}
+                    {{ serviceForm.date }}
+                </div>
+                <div class="col-sm">
+
+                  <label for="{{ serviceForm.category.id_for_label }}" class="col-form-label">{{ serviceForm.category.label }}</label>
+                    {{ serviceForm.category }}
+{#                  <select class="custom-select">#}
+{#                      <option selected>Open this select menu</option>#}
+{#                      <option value="1">One</option>#}
+{#                      <option value="2">Two</option>#}
+{#                      <option value="3">Three</option>#}
+{#                  </select>#}
+
+                </div>
+                <div class="col-sm">
+                  <label for="{{ serviceForm.state.id_for_label }}" class="col-form-label">{{ serviceForm.state.label }}</label>
+                    {{ serviceForm.state }}
+{#                  <select class="custom-select">#}
+{#                      <option selected>Open this select menu</option>#}
+{#                      <option value="1">One</option>#}
+{#                      <option value="2">Two</option>#}
+{#                      <option value="3">Three</option>#}
+{#                   </select>#}
+                </div>
+                <div class="col-sm">
+                  <label for="machinestop" class="col-form-label">停機中</label>
+                  <select class="custom-select">
+                      <option selected>是</option>
+                      <option value="1">否</option>
+                   </select>
+                </div>
+                </div>
+                <div class="from-group row">
+                <div class="col-sm">
+                    <label for="{{ serviceForm.hospital.id_for_label }}" class="col-form-label">{{ serviceForm.hospital.label }}</label>
+                    {{ serviceForm.hospital }}
+{#                    <select class="custom-select">#}
+{#                      <option selected>Open this select menu</option>#}
+{#                      <option value="1">One</option>#}
+{#                      <option value="2">Two</option>#}
+{#                      <option value="3">Three</option>#}
+{#                    </select>#}
+                </div>
+                <div class="col-sm">
+                  <label for="category" class="col-form-label">收話人</label>
+                  <select class="custom-select">
+                      <option selected>Open this select menu</option>
+                      <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                  </select>
+                </div>
+                <div class="col-sm">
+                  <label for="state" class="col-form-label">處理人員</label>
+                  <select class="custom-select">
+                      <option selected>Open this select menu</option>
+                      <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                   </select>
+                </div>
+                <div class="col-sm">
+                  <label for="{{ serviceForm.contractType.id_for_label }}" class="col-form-label">{{ serviceForm.contractType.label }}</label>
+                    {{ serviceForm.contractType }}
+{#                  <select class="custom-select">#}
+{#                     <option value="1">One</option>#}
+{#                      <option value="2">Two</option>#}
+{#                      <option value="3">Three</option>#}
+{#                   </select>#}
+                </div>
+                </div>
+                <div class="from-group row">
+                <div class="col-sm">
+                  <label for="{{ serviceForm.machineName.id_for_label }}" class="col-form-label">{{ serviceForm.machineName.label }}</label>
+                    {{ serviceForm.machineName }}
+{#                  <select class="custom-select">#}
+{#                      <option selected>Open this select menu</option>#}
+{#                      <option value="1">One</option>#}
+{#                      <option value="2">Two</option>#}
+{#                      <option value="3">Three</option>#}
+{#                  </select>#}
+                </div>
+                <div class="col-sm">
+                    <label for="{{ serviceForm.machineid.id_for_label }}" class="col-form-label">{{ serviceForm.machineid.label }}</label>
+                    {{ serviceForm.machineid }}
+{#                    <select class="custom-select">#}
+{#                      <option selected>Open this select menu</option>#}
+{#                      <option value="1">One</option>#}
+{#                      <option value="2">Two</option>#}
+{#                      <option value="3">Three</option>#}
+{#                    </select>#}
+                </div>
+                </div>
+
+                <div class="from-group row">
+                    <div class="col-sm">
+                    <label for="{{ serviceForm.callcont.id_for_label }}" class="col-form-label">{{ serviceForm.callcont.label }}</label>
+                      <input type="text" class="form-control" id="colFormLabel" placeholder="ex: MLC偵測不到">
+                    </div>
+                </div>
+                <div class="from-group row">
+                    <div class="col-sm">
+                    <label for="{{ serviceForm.brokenitems.id_for_label }}" class="col-form-label">{{ serviceForm.brokenitems.label }}</label>
+                      <input type="email" class="form-control" id="colFormLabel" placeholder="ex: TOMO維修SOP維修方法">
+                    </div>
+                </div>
+                <div class="from-group row">
+                    <div class="col-sm-3">
+                        <label for="{{ serviceForm.facid.id_for_label }}" class="col-form-label">更換</label>
+                        {{ serviceForm.facid }}
+{#                        <select class="custom-select">#}
+{#                          <option selected>工廠碼</option>#}
+{#                          <option value="1"></option>#}
+{#                          <option value="2">Two</option>#}
+{#                        </select>#}
+                    </div>
+                    <div class="col-sm-3">
+                      <label for="{{ serviceForm.partsgpname.id_for_label }}" class="col-form-label">物料</label>
+                        {{ serviceForm.partsgpname }}
+{#                      <select class="custom-select">#}
+{#                          <option selected>物料群組分類</option>#}
+{#                          <option value="1">One</option>#}
+{#                          <option value="2">Two</option>#}
+{#                          <option value="3">Three</option>#}
+{#                      </select>#}
+                    </div>
+                    <div class="col-sm-4">
+                      <label for="{{ serviceForm.partsid.id_for_label }}" class="col-form-label">零件</label>
+                        {{ serviceForm.partsid }}
+{#                      <select class="custom-select">#}
+{#                          <option selected>零件物料號</option>#}
+{#                          <option value="1">One</option>#}
+{#                          <option value="2">Two</option>#}
+{#                          <option value="3">Three</option>#}
+{#                       </select>#}
+                    </div>
+                    <div class="col-sm-2 align-self-end "> <!--align-self-end-->
+                        <button type="button" class="btn btn-secondary btn-md align-right">
+                         新增
+                            {# <span class="material-icons" style="font-size:35px;">add_box_outline</span>#}
+                        </button>
+                    </div>
+                </div>
+                <div class="from-group row">
+                    <div class="col-sm">
+                    <label for="parts_all" class="col-form-label"></label>
+                      <input type="" class="form-control" id="colFormLabel" placeholder="451333114700BR,">
+                    </div>
+                </div>
+                <div class="from-group row">
+                    <div class="col-sm">
+                      <label for="{{ serviceForm.calltime.id_for_label }}" class="col-form-label">{{ serviceForm.calltime.label }}</label>
+                        {{ serviceForm.calltime }}
+{#                        <input type="time" class="form-control" id="appt" name="appt">#}
+                    </div>
+                    <div class="col-sm">
+                      <label for="{{ serviceForm.arrtime.id_for_label }}" class="col-form-label">{{ serviceForm.arrtime.label }}</label>
+                       {{ serviceForm.arrtime }}
+                       {#   <input type="time" class="form-control" id="appt" name="appt">#}
+                    </div>
+                    <div class="col-sm">
+                      <label for="{{ serviceForm.fixtime.id_for_label }}" class="col-form-label">{{ serviceForm.fixtime.label }}</label>
+                        {{ serviceForm.fixtime }}
+                        {# <input type="time" class="form-control" id="appt" name="appt">#}
+                    </div>
+                    <div class="col-sm">
+                      <label for="{{ serviceForm.repairedtime.id_for_label }}" class="col-form-label">{{ serviceForm.repairedtime.label }}</label>
+                        {{ serviceForm.repairedtime }}
+                        {# <input type="time" class="form-control" id="appt" name="appt">#}
+                    </div>
+                </div>
+                <div class="from-group row">
+                    <div class="col-sm">
+                    <label for="{{ serviceForm.repairdur.id_for_label }}" class="col-form-label">{{ serviceForm.repairdur.label}}</label>
+{#                        {{ serviceForm.repairdur }}#}
+                      <input type="email" class="form-control" id="colFormLabel" placeholder="自動計算">
+                    </div>
+                    <div class="col-sm">
+                    <label for="{{ serviceForm.machinestpdur.id_for_label }}" class="col-form-label">{{ serviceForm.machinestpdur.label }}</label>
+{#                        {{ serviceForm.machinestpdur }}#}
+                      <input type="email" class="form-control" id="colFormLabel" placeholder="">
+                    </div>
+                    <div class="col-sm">
+                      <label for="{{ serviceForm.repaircont.id_for_label }}" class="col-form-label">{{ serviceForm.repaircont.label }}</label>
+                        {{ serviceForm.repaircont }}
+{#                      <select class="custom-select">#}
+{#                          <option selected>SOP維修流程?</option>#}
+{#                          <option value="1">One</option>#}
+{#                          <option value="2">Two</option>#}
+{#                          <option value="3">Three</option>#}
+{#                      </select>#}
+                    </div>
+                </div>
+                <div class="from-group row mb-3">
+                    <div class="col-sm">
+                        <label for="{{ serviceForm.note.id_for_label }}" class="col-form-label">{{ serviceForm.note.label }}</label>
+                        {{ serviceForm.note }}
+{#                        <input type="email" class="form-control" id="colFormLabel" placeholder="">#}
+                    </div>
+                </div>
+
+{#                {% for field in serviceForm %}#}
+{#                  <div class="fieldWrapper">#}
+{#                   {{ field.errors }}#}
+{#                   {{ field.label_tag }}: {{ field }}#}
+{#                  </div>#}
+{#                 {% endfor %}#}
+
+
+                <div class="from-group row justify-content-center">
+                    <button type="submit" class="btn btn-secondary mb-2">送出</button>
+                </div>
+
+    </fieldset>
+            </div>
+
+</form>
+<script>
+ $(document).ready(function() {
+    function calculateTime() {
+            //get values
+            var valuestart = $("vselect[name='fixtime']").val();
+            var valuestop = $("select[name='repairedtime']").val();
+
+             //create date format
+             var timeStart = new Date("01/01/2007 " + valuestart).getHours();
+             var timeEnd = new Date("01/01/2007 " + valuestop).getHours();
+
+             console.log(valuestart, valuestop, timeStart, timeEnd);
+             var hourDiff = timeEnd - timeStart;
+             if (hourDiff < 0) {
+             	hourDiff = 24 + hourDiff;
+             }
+
+             $("p").html("<b>Hour Difference:</b> " + hourDiff )
+
+    };
+    $("select").change(calculateTime);
+    calculateTime();
+    });
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+    {% if category %}
+    <div>
+    <div>
+    類別: {{ category.categoryname }}
+    </div>
+    </div>
+    {% endif %}
+
+{% endblock %}

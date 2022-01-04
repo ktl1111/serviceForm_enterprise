@@ -1,0 +1,15 @@
+{% extends 'main/base.html' %}
+{% block content %}
+<h3>更新類別</h3>
+{% if category %}
+<form method="POST" action="{% url 'serviceForm:categoryUpdate' category.categoryid %}">  <!--category.categoryid-->
+{% endif %}
+    {% csrf_token %}
+  {{ categoryForm.as_table }}
+
+ <input type="submit" value="更新">
+
+</form>
+
+{% endblock%}
+

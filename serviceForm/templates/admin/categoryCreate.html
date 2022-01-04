@@ -1,0 +1,12 @@
+{% extends 'main/base.html' %}
+{% block content %}
+
+<h3>新增類別</h3>
+<form method="post" action="{% url 'serviceForm:categoryCreate' %}"> <!--/serviceForm/categoryCreate/...serviceForm\urls.py裡面定義的path-->
+  {% csrf_token %}
+  {{ categoryForm.as_table }}
+
+  <input type="submit" value="儲存">
+</form>
+
+{% endblock %}

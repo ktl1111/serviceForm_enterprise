@@ -1,9 +1,14 @@
 from django.contrib import messages
+from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 
 from serviceForm.forms import CategoryForm, ServiceForm
-from serviceForm.models import Category
+from serviceForm.models import Category, Machine
+
+from django.core import serializers
+from django.views.generic import ListView, CreateView, UpdateView
+
 # Create your views here.
 
 #要有default pre-populated with initial values
@@ -67,20 +72,8 @@ def form(request):
 
         serviceForm.save()
         return redirect(reverse('serviceForm:form'))
-    # context={}
-    # context['form'] = ServiceForm()
-    # return render(request, 'newForm.html', context)
-def newForm(request):
-    if request.method == 'GET':
-        serviceForm =ServiceForm()
-        return render(request, 'newForm.html', {'serviceForm': serviceForm})
-    elif request.method == 'POST':
-        serviceForm = ServiceForm(request.POST)
-        if not serviceForm.is_valid():
-            return render(request, 'newForm.html', {'serviceForm': serviceForm})
 
-        serviceForm.save()
-        return redirect(reverse('serviceForm:newForm'))
-    # context={}
-    # context['form'] = ServiceForm()
-    # return render(request, 'newForm.html', context)
+def formarea(request):
+    return render(request, 'formarea.html')
+
+

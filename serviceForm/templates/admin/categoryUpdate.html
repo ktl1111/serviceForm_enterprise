@@ -1,11 +1,13 @@
 {% extends 'main/base.html' %}
 {% block content %}
+{% load crispy_forms_tags %}
 <h3>更新類別</h3>
 {% if category %}
 <form method="POST" action="{% url 'serviceForm:categoryUpdate' category.categoryid %}">  <!--category.categoryid-->
 {% endif %}
     {% csrf_token %}
-  {{ categoryForm.as_table }}
+    {{ categoryForm|crispy }}
+{#  {{ categoryForm.as_table }}#}
 
  <input type="submit" value="更新">
 

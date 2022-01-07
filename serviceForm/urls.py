@@ -9,6 +9,8 @@ urlpatterns = [
     path('categoryDelete/<int:categoryid>/', views.categoryDelete, name='categoryDelete'),
     path('categoryRead/<int:categoryid>/', views.categoryRead, name='categoryRead'),
     path('form/', views.form, name='form'),
-    path('newForm/', views.newForm, name='newForm'),
+    path('formarea/', views.formarea, name='formarea'),
+
+
     # path('hospital/', views.hospital, name='hospital'),
 ]

@@ -112,24 +112,25 @@
                     {{ serviceForm.hospital }}
                 </div>
                 <div class="col-sm">
+                    <label disabled for="{{ serviceForm.machineName.id_for_label }}" class="col-form-label">{{ serviceForm.machineName.label }}</label>
+                        {{ serviceForm.machineName }}
+                </div>
+                <div class="col-sm">
                     <label for="{{ serviceForm.machineid.id_for_label }}" class="col-form-label">{{ serviceForm.machineid.label }}</label>
                         {{ serviceForm.machineid }}
                 </div>
-{#                <div class="col-sm">#}
-{#                    <label disabled for="{{ serviceForm.machineName.id_for_label }}" class="col-form-label">{{ serviceForm.machineName.label }}</label>#}
-{#                        {{ serviceForm.machineName }}#}
-{#                </div>#}
+
 
                 </div>
                 <div class="from-group row">
                     <div class="col-sm">
                     <label for="{{ serviceForm.brokenitems.id_for_label }}" class="col-form-label">{{ serviceForm.brokenitems.label }}</label>
-                      <input type="email" class="form-control" id="colFormLabel" placeholder="ex: TOMO維修SOP維修方法">
+                      <input type="email" class="form-control" id="colFormLabel" placeholder="">
                     </div>
 
                     <div class="col-sm">
                     <label for="{{ serviceForm.callcont.id_for_label }}" class="col-form-label">{{ serviceForm.callcont.label }}</label>
-                      <input type="text" class="form-control" id="colFormLabel" placeholder="ex: MLC偵測不到">
+                      <input type="text" class="form-control" id="colFormLabel" placeholder="">
                     </div>
 
                     <div class="col-sm">
@@ -235,7 +236,27 @@
 {#                   {{ field.label_tag }}: {{ field }}#}
 {#                  </div>#}
 {#                 {% endfor %}#}
-
+{#<div class="btn-group">#}
+{#  <button type="button" class="btn dropdown-toggle pr-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">#}
+{#    故障項目1#}
+{#  </button>#}
+{#  <div class="dropdown-menu dropdown-menu-right">#}
+{#    <button class="dropdown-item" type="button">Area 10, GANTRY DRUM</button>#}
+{#    <button class="dropdown-item" type="button">Area 11, MOTOR DRIVE AREA</button>#}
+{#    <button class="dropdown-item" type="button">Area 12, RADIATION HEAD CONTROL AREA AND MLC INTERFACE UNIT</button>#}
+{#  </div>#}
+{#     <button type="button" class="btn  dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">#}
+{#    故障項目2#}
+{#  </button>#}
+{#  <div class="dropdown-menu dropdown-menu-right">#}
+{#    <button class="dropdown-item" type="button">Software</button>#}
+{#    <button class="dropdown-item" type="button">Hardware(Exclude PCB)</button>#}
+{#    <button class="dropdown-item" type="button">Hardware(PCB)</button>#}
+{#    <button class="dropdown-item" type="button">Parameter adjustment</button>#}
+{#    <button class="dropdown-item" type="button">Other</button>#}
+{#  </div>#}
+{##}
+{#</div>#}
 
                 <div class="from-group row justify-content-center">
                     <button type="submit" class="btn btn-secondary mb-2">送出</button>
@@ -267,12 +288,18 @@ function myFunction() {
   if (start < end)
   {
     {#totalHours = Math.floor((end-start)/60);#}
-    totalHours = (end-start)/60;
+    totalHours = Math.round((((end-start)/60)+ Number.EPSILON) * 100) / 100;
+
   }
 
   $("#total-hours").val(totalHours);
 
  }
+
+
+
+ var div = document.getElementById('div_height2'); if(div != null){var top = div.offsetHeight; CMC('txtTopScroll').setValue(top); CMC('btnDivScroll').doClick();}
+
     </script>
 </form>
 

@@ -58,7 +58,7 @@ class ServiceForm(forms.ModelForm):
     mensent = forms.ModelChoiceField(Category.objects.filter(categoryname__startswith="保"), label='處理人', widget=forms.Select(attrs={'class':'form-control'}), required=True) #要再改
     contractType = forms.ModelChoiceField(ContractType.objects.all(), label='合約型態', widget=forms.Select(attrs={'class': 'form-control'}), initial="W")
     # machineName = forms.ModelChoiceField(Machine.objects.select_related('hospitalid__areaid').filter(hospitalid__areaid=1).distinct(), label='機器名稱', widget=forms.Select(attrs={'class': 'form-control', 'id':'machinename'}), initial="TOMO")
-    machineName = forms.ModelChoiceField(MachineName.objects.all(), label='機器名稱', widget=forms.Select(attrs={'class': 'form-control', 'id':'machinename'}))
+    machineName = forms.ModelChoiceField(MachineName.objects.all(), label='機器分類', widget=forms.Select(attrs={'class': 'form-control', 'id':'machinename'}))
     machineid = MachineModelChoiceField(queryset=Machine.objects.select_related('hospitalid__areaid').filter(hospitalid__areaid=1), label='機器型號', widget=forms.Select(attrs={'class': 'form-control'}))
     callcont = forms.CharField(widget=forms.Textarea, label='叫修內容')
     brokenitems= forms.CharField(label='故障項目', widget=forms.TextInput(attrs={'class':'form-control'}))

@@ -64,8 +64,8 @@ class ServiceForm(forms.ModelForm):
     brokenitems= forms.CharField(label='故障項目', widget=forms.TextInput(attrs={'class':'form-control'}))
     facid = forms.ModelChoiceField(Factory.objects.all(), label='更換零件(工廠碼)', widget=forms.Select(attrs={'class': 'form-control'}), initial="T011") #不入資料庫
     partsgpname = PartsgpnameModelChoiceField(queryset=Parts.objects.all(), label='(物料)', widget=forms.Select(attrs={'class': 'form-control'})) #不入資料庫
-    partsid = PartsidModelChoiceField(queryset=Parts.objects.all(), label='(零件號)', widget=forms.Select(attrs={'class': 'form-control'})) #不入資料庫
-    parts = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'})) #入資料庫 零件號
+    partsid = PartsidModelChoiceField(queryset=Parts.objects.all(), label='', widget=forms.Select(attrs={'class': 'form-control','id':'partsid', 'name': 'partsid'})) #不入資料庫
+    parts = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control','id':'partsall', 'type':'text'})) #入資料庫 零件號
     calltime = forms.TimeField(label='叫修時間', widget=forms.TimeInput(attrs={'class':'form-control', 'type': 'time'}))
     arrtime = forms.TimeField(label='到達時間', widget=forms.TimeInput(attrs={'class':'form-control', 'type': 'time'}))
     fixtime = forms.TimeField(label='維修時間', widget=forms.TimeInput(attrs={'class':'form-control', 'type': 'time', 'name':'input-time', 'id':'start-time'}))

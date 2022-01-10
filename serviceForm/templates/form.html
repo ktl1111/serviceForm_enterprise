@@ -175,16 +175,19 @@
 {#                       </select>#}
                     </div>
                     <div class="col-sm-2 align-self-end "> <!--align-self-end-->
-                        <button type="button" class="btn btn-secondary btn-md align-right">
-                         新增
+{#                        <button type="button" class="btn btn-secondary btn-md align-right">#}
+{#                         新增#}
                             {# <span class="material-icons" style="font-size:35px;">add_box_outline</span>#}
-                        </button>
+{#                        </button>#}
+                        <input type="button"  class="btn btn-secondary btn-md align-right"  value="新增" onclick="AddParts()">
                     </div>
                 </div>
                 <div class="from-group row">
                     <div class="col-sm">
-                    <label for="parts_all" class="col-form-label"></label>
-                      <input type="" class="form-control" id="colFormLabel" placeholder="451333114700BR,">
+                    <label for="{{ serviceForm.parts.id_for_label }}" class="col-form-label"></label>
+                        {{ serviceForm.parts }}
+{#                      <input type="text" class="form-control" id="partsall" placeholder="">#}
+{#                        451333114700BR,#}
                     </div>
                 </div>
                 <div class="from-group row">
@@ -300,6 +303,19 @@ function myFunction() {
 
  var div = document.getElementById('div_height2'); if(div != null){var top = div.offsetHeight; CMC('txtTopScroll').setValue(top); CMC('btnDivScroll').doClick();}
 
+
+{#addparts#}
+all = ""
+function AddParts(){
+    var PartsValue=document.getElementById("partsid").value;
+    document.getElementById("partsall").value=PartsValue;
+    all = all + document.getElementById("partsall").value + ',';
+    document.getElementById("partsid").value='';
+
+   console.log(all)
+   document.getElementById("partsall").value = all
+
+}
     </script>
 </form>
 
